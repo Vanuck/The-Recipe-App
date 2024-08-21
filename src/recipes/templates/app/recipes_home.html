@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Link to Google Fonts for Roboto font family -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    
+    <!-- Favicon for the website -->
+    <link rel="shortcut icon" href="../../static/recipe/images/favicon.png">
+
+    <!-- Link to external CSS stylesheet for additional styles -->
+    <!-- <link rel="stylesheet" href=""> -->
+    <title>Welcome to the Recipe App</title>
+    <style>
+         /* Basic reset for margin, padding, and height */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif; /* Fallback font if Roboto isn't loaded */
+        }
+
+         /* Background image styling with a smooth transition */
+        .background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            animation: changeBackground 25s infinite;
+        } 
+
+         /* Keyframe animation for cycling through background images */
+        @keyframes changeBackground {
+            10% { background-image: url('../../static/recipe/images/donair.jpg'); }
+            33% { background-image: url('../../static/recipe/images/chickensoup.jpg'); }
+            50% { background-image: url('../../static/recipe/images/fajitas.jpg'); }
+            66% { background-image: url('../../static/recipe/images/pizza.jpg'); }
+            80% { background-image: url('../../static/recipe/images/spaghetti.jpg'); }
+            100% { background-image: url('../../static/recipe/images/foodbackground.jpg'); }
+        }
+
+         /* Navbar styling with semi-transparent background */
+        .navbar {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Styling for navbar links */
+        .navbar a {
+            margin: 0 15px;
+            color: rgb(80, 4, 4); /* Dark red color for text */
+            text-decoration: none; /* Remove underline from links */
+            font-size: 24px;
+        }
+
+        /* Search bar positioning and styling */
+        .search-bar {
+            position: relative;
+            z-index: 10; /* Above background */
+            top: 40%; /* Vertically center on the page */
+            color: rgb(80, 4, 4);
+            text-align: center;
+        }
+
+        /* Search input field styling */
+        .search-bar input {
+            width: 50%;
+            padding: 15px;
+            color: rgb(80, 4, 4);
+            font-size: 20px;
+            border-radius: 30px; /* Rounded corners for the input field */
+            border: none; /* Remove default border */
+        }
+
+        /* Featured section styling for popular recipes (To be added) */
+        .featured-section {
+            position: relative;
+            z-index: 10;
+            margin-top: 50px;
+            text-align: center;
+            color: white;
+        }
+
+        /* Footer styling with semi-transparent black background */
+        .footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Background div for the changing background images -->
+<div class="background"></div>
+
+<!-- Navigation bar with links to different sections (Sections to be added) -->
+<div class="navbar">
+    <a href="#">Home</a>
+    <a href="{% url 'recipe_overview' %}">Recipes</a>
+    <a href="#">My Favorites</a>
+
+
+<!-- Search form for users to search for ingredients -->
+        <form
+          action="{% url 'search_results' %}"
+          method="get"
+          style="display: inline"
+        >
+          <input type="text" name="query" placeholder="Search ingredients..." />
+          <button type="submit">Search</button>
+        </form>
+</div>
+<!-- Footer section with social media links and other content -->
+<div class="footer">
+    <p>Follow us on social media!</p>
+    <!-- Will add social media icons and links here -->
+</div>
+
+</body>
+</html>

@@ -14,12 +14,13 @@ class Ingredient(models.Model):
 
 class Recipe(models.Model):
     # class attributes
+    name = models.CharField(max_length=80, null=True)
     description = models.TextField(max_length=400)
     cooking_time = models.FloatField(
         help_text="in minutes"
     )  # Using FloatField for precision
     ingredients = models.ManyToManyField(Ingredient)
-    image = models.ImageField(upload_to="recipes/", blank=True, null=True)
+    image = models.ImageField(upload_to="recipes/", default='no_picture.jpg')
     creation_date = models.DateTimeField(auto_now_add=True)
 
     def calculate_difficulty(self):

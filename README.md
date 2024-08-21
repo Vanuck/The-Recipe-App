@@ -11,7 +11,7 @@ This project is a web application using the Django framework with Python. Django
 
 <h2>Features</h2>
   
-- **User Registration**: Users can sign up to access their personalized dashboard.
+- **User Registration**: Users can sign up to access their personalized dashboard (to be added).
 - **Recipe Creation and Modification**: Registered users can create and modify their own recipes. Each recipe includes details such as ingredients, cooking time, and an automatically calculated difficulty parameter.
 - **Recipe Search**: Users have the ability to search for recipes using specific ingredients, making it easier to find suitable dishes.
 - **Admin Panel**: A robust admin panel for managing the application's data and users.

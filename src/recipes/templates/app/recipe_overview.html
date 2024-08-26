@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -63,7 +65,7 @@
       <ul>
         {% for recipe in recipes %}
         <li>
-          <a href="{% url 'recipe_detail' pk=recipe.pk %}">{{ recipe.name }}</a>
+          <a href="{% url 'recipe:recipe_detail' pk=recipe.pk %}">{{ recipe.name }}</a>
         </li>
         {% empty %}
         <li>No recipes available.</li>

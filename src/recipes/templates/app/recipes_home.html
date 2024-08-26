@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -106,14 +108,14 @@
 
 <!-- Navigation bar with links to different sections (Sections to be added) -->
 <div class="navbar">
-    <a href="#">Home</a>
-    <a href="{% url 'recipe_overview' %}">Recipes</a>
+    <a href="{% url 'home' %}">Home</a>
+    <a href="{% url 'recipe:recipe_overview' %}">Recipes</a>
     <a href="#">My Favorites</a>
 
 
 <!-- Search form for users to search for ingredients -->
         <form
-          action="{% url 'search_results' %}"
+          action="{% url 'recipe:search_results' %}"
           method="get"
           style="display: inline"
         >

@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -72,7 +74,7 @@
         <li>No ingredients listed.</li>
         {% endfor %}
       </ul>
-      <a href="{% url 'recipe_overview' %}">Back to Recipe List</a>
+      <a href="{% url 'recipe:recipe_overview' %}">Back to Recipe List</a>
     </div>
   </body>
 </html>

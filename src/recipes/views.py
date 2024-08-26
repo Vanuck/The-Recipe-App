@@ -36,4 +36,4 @@ def search_results(request):
     else:
         recipes = Recipe.objects.none()
 
-    return render(request, "search_results.html", {"recipes": recipes})
+    return render(request, "app/search_results.html", {"recipes": recipes})

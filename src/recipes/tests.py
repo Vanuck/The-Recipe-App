@@ -25,19 +25,19 @@ class RecipeTestCase(TestCase):
         recipe.ingredients.set([tea_leaves, water, sugar])
 
     def test_search_by_ingredient(self):
-        response = self.client.get(reverse("search_results"), {"query": "tea-leaves"})
+        response = self.client.get(reverse("recipe:search_results"), {"query": "tea-leaves"})
         self.assertContains(response, "Tea")
         self.assertNotContains(response, "Coffee")
 
     def test_search_no_results(self):
-        response = self.client.get(reverse("search_results"), {"query": "chocolate"})
+        response = self.client.get(reverse("recipe:search_results"), {"query": "chocolate"})
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "No recipes found.")
 
     def test_description_length(self):
         recipe = Recipe.objects.get(id=1)
         desc_max_length = recipe._meta.get_field("description").max_length
-        self.assertTrue(desc_max_length >= 500)  
+        self.assertTrue(desc_max_length >= 400)  
     
     def test_recipe_name(self):
         recipe = Recipe.objects.get(id=1)

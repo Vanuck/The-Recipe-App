@@ -49,36 +49,51 @@
             position: relative;
             z-index: 10;
             text-align: center;
-            padding: 20px;
+            padding: 30px 0; /* Increased padding */
             background: rgba(255, 255, 255, 0.2);
         }
 
         /* Styling for navbar links */
         .navbar a {
-            margin: 0 15px;
+            margin: 10px 15px;
             color: rgb(80, 4, 4); /* Dark red color for text */
             text-decoration: none; /* Remove underline from links */
-            font-size: 24px;
+            font-size: 50px;
         }
 
         /* Search bar positioning and styling */
-        .search-bar {
-            position: relative;
-            z-index: 10; /* Above background */
-            top: 40%; /* Vertically center on the page */
+        .navbar .search-bar {
+            margin-top: 20px;
             color: rgb(80, 4, 4);
             text-align: center;
         }
 
         /* Search input field styling */
-        .search-bar input {
-            width: 50%;
-            padding: 15px;
+        .navbar .search-bar input {
+            width: 40%;
+            padding: 30px;
             color: rgb(80, 4, 4);
-            font-size: 20px;
+            font-size: 30px;
             border-radius: 30px; /* Rounded corners for the input field */
             border: none; /* Remove default border */
         }
+
+        /* Search button styling */
+        .navbar .search-bar button {
+            padding: 25px 50px; /* Increased padding for larger button */
+            font-size: 30px; /* Increased font size */
+            border-radius: 30px; /* Match the input field */
+            background-color: rgb(80, 4, 4); /* Button color */
+            color: white; /* Button text color */
+            border: none; /* Remove default border */
+            cursor: pointer; /* Change cursor to pointer on hover */
+        }
+
+        /* Button hover effect */
+        .navbar .search-bar button:hover {
+            background-color: rgb(120, 0, 0); /* Darker color on hover */
+        }
+
 
         /* Featured section styling for popular recipes (To be added) */
         .featured-section {
@@ -89,15 +104,17 @@
             color: white;
         }
 
+        
         /* Footer styling with semi-transparent black background */
         .footer {
             position: absolute;
             bottom: 0;
             width: 100%;
+            font-size: 30px;
             text-align: center;
             padding: 20px;
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
+            background: rgba(62, 61, 61, 0.5);
+            color: rgb(14, 7, 83);
         }
     </style>
 </head>
@@ -113,16 +130,15 @@
     <a href="#">My Favorites</a>
 
 
-<!-- Search form for users to search for ingredients -->
-        <form
-          action="{% url 'recipe:search_results' %}"
-          method="get"
-          style="display: inline"
-        >
-          <input type="text" name="query" placeholder="Search ingredients..." />
-          <button type="submit">Search</button>
+    <!-- Search form for users to search for ingredients -->
+    <div class="search-bar">
+        <form action="{% url 'recipe:search_results' %}" method="get" style="display: inline">
+            <input type="text" name="query" placeholder="Search ingredients..." />
+            <button type="submit">Search</button>
         </form>
+    </div>
 </div>
+
 <!-- Footer section with social media links and other content -->
 <div class="footer">
     <p>Follow us on social media!</p>

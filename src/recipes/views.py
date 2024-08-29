@@ -3,19 +3,19 @@ from .models import Recipe, Ingredient
 
 
 def home(request):
-    return render(request, "app/recipes_home.html")
+    return render(request, "recipe/recipes_home.html")
 
 
 def recipe_overview(request):
     recipes = Recipe.objects.all()
-    return render(request, "app/recipe_overview.html", {"recipes": recipes})
+    return render(request, "recipe/recipe_overview.html", {"recipes": recipes})
 
 
 def recipe_detail(request, pk):
     recipe = Recipe.objects.get(pk=pk)
     difficulty = recipe.calculate_difficulty()
     return render(
-        request, "app/recipe_detail.html", {"recipe": recipe, "difficulty": difficulty}
+        request, "recipe/recipe_detail.html", {"recipe": recipe, "difficulty": difficulty}
     )
 
 
@@ -25,10 +25,14 @@ def search_by_ingredient(request):
         recipes = Recipe.objects.filter(ingredients__name__icontains=query).distinct()
     else:
         recipes = Recipe.objects.none()
-    return render(request, "app/search_results.html", {"recipes": recipes})
-
+    return render(request, "recipe/search_results.html", {"recipes": recipes})
 
 def search_results(request):
+    query = request.GET.get('query')
+    recipes = Recipe.objects.filter(ingredients__name__icontains=query) if query else Recipe.objects.none()
+    return render(request, 'recipe/search_results.html', {'recipes': recipes})
+
+""" def search_results(request):
     query = request.GET.get("query", "")
     if query:
         ingredients = Ingredient.objects.filter(name__icontains=query)
@@ -36,4 +40,4 @@ def search_results(request):
     else:
         recipes = Recipe.objects.none()
 
-    return render(request, "app/search_results.html", {"recipes": recipes})
+    return render(request, "search_results.html", {"recipes": recipes}) """

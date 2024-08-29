@@ -20,7 +20,7 @@ class Recipe(models.Model):
         help_text="in minutes"
     )  # Using FloatField for precision
     ingredients = models.ManyToManyField(Ingredient)
-    image = models.ImageField(upload_to="recipes/", default='no_picture.jpg')
+    image = models.ImageField(upload_to="recipes/", default='noimage.png')
     creation_date = models.DateTimeField(auto_now_add=True)
 
     def calculate_difficulty(self):

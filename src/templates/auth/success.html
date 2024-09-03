@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>The Recipe App - Logout</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+    <link rel="shortcut icon" href="{% static 'recipes/images/favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'recipes/css/styles.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;700&display=swap" rel="stylesheet">
+    <style type="text/css">
+        body {
+            background: 
+                linear-gradient(rgba(0, 0, 0, 0.235), rgba(0, 0, 0, 0.235)),
+                url("{% static 'recipes/images/foodbackground.jpg' %}") no-repeat fixed;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: -15vh;
+            padding: 3px;
+        }
+
+        h2 {
+            color: #000000;
+            font-family: 'Roboto Mono', 'Calibri', 'Trebuchet MS', sans-serif;
+            text-align: center;
+        }
+        /* Modal with text and login button */
+        .auth_modal {
+            background: #ffffff44;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            width: 25%;
+            font-size: 20px;
+        }
+        
+        .center-button {
+            text-align: center; /* Centering the button */
+        }
+
+        .login_btn {
+            width: 70px;
+            font-family: 'Roboto Mono', 'Calibri', 'Trebuchet MS', sans-serif;
+            font-size: 16px;
+            background-color: rgb(8, 75, 30);
+            border-radius: 5px;
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            color: #076d18;
+            text-align: center;
+            font-size: 200px;
+            letter-spacing: 5px;
+            margin-top: 200px;
+            text-shadow: 
+                    -4px -4px 0 #000, 
+                    4px -4px 0 #000, 
+                    -4px 4px 0 #000, 
+                    4px 4px 0 #000;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>The Recipe App</h1>
+    </div>
+    <div class="auth_modal">
+        <h2>Successfully Logged Out!</h2>
+        
+        <h2>See you next time.</h2>
+        <br>
+        <div class="center-button">
+        <a class="login_btn" href="{%url 'login' %}"> Login </a>
+    </div>
+</body>
+
+</html>

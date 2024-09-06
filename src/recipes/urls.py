@@ -1,21 +1,10 @@
 from django.urls import path
-from . import views
+from .views import home, RecipesListView, RecipesDetailView
 
-# import home view
-from .views import home
-
-from .views import RecipeListView, RecipeDetailView
-
-app_name = 'recipe'
+app_name = "recipes"
 
 urlpatterns = [
-    # path("", home),
-    path("", views.home, name="home"),
-    path("list/", RecipeListView.as_view(), name="list"),
-    path("list/<pk>", RecipeDetailView.as_view(), name="detail"),
-    path("recipes/", views.recipe_overview, name="recipe_overview"),
-    path("recipes/<int:pk>/", views.recipe_detail, name="recipe_detail"),
-    path("search/", views.search_results, name="search_results"),
-     path('overview/', views.recipe_overview, name='overview'),
+    path("", home, name="home"),
+    path("recipes/", RecipesListView.as_view(), name="recipes"),
+    path("recipes/<pk>", RecipesDetailView.as_view(), name="detail"),
 ]
-

@@ -1,60 +1,50 @@
 from django.test import TestCase
-# to access Recipe model
-from .models import Recipe, Ingredient
-from django.urls import reverse
+from django.contrib.auth.models import User
+from .models import Recipe
+
 
 # Create your tests here.
-
-class RecipeTestCase(TestCase):
-     # set up non-modified objects used by all test methods
-    @classmethod
-    def setUpTestData(cls):
-        # Create Ingredients
-        tea_leaves = Ingredient.objects.create(name="tea-leaves")
-        water = Ingredient.objects.create(name="water")
-        sugar = Ingredient.objects.create(name="sugar")
-
-        # Create a Recipe
-        recipe = Recipe.objects.create(
-            name="Tea",
-            cooking_time=5,
-            description="Add tea leaves to boiling water, then add sugar",
+class RecipeModelTest(TestCase):
+    def setUpTestData():
+        Recipe.objects.create(
+            name="Omelette",
+            cooking_time=10,
+            ingredients="Eggs, Butter, Salt, Pepper, Onion, Bell Pepper, Ham",
         )
 
-       # Add ingredients to the recipe
-        recipe.ingredients.set([tea_leaves, water, sugar])
-
-    def test_search_by_ingredient(self):
-        response = self.client.get(reverse("recipe:search_results"), {"query": "tea-leaves"})
-        self.assertContains(response, "Tea")
-        self.assertNotContains(response, "Coffee")
-
-    def test_search_no_results(self):
-        response = self.client.get(reverse("recipe:search_results"), {"query": "chocolate"})
-        self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "No recipes found.")
-
-    def test_description_length(self):
-        recipe = Recipe.objects.get(id=1)
-        desc_max_length = recipe._meta.get_field("description").max_length
-        self.assertTrue(desc_max_length >= 400)  
-    
+    # Test for recipe name being initialized
     def test_recipe_name(self):
         recipe = Recipe.objects.get(id=1)
-        recipe_name_label = recipe._meta.get_field("name").verbose_name
-        self.assertEqual(recipe_name_label, "name")
+        field_label = recipe._meta.get_field("name").verbose_name
+        self.assertEqual(field_label, "name")
 
-    def test_cooking_time_help_text(self):
+    # Test for recipe name exceeding 100 characters
+    def test_recipe_name_max_length(self):
         recipe = Recipe.objects.get(id=1)
-        cooking_time_help_text = recipe._meta.get_field("cooking_time").help_text
-        self.assertEqual(cooking_time_help_text, "in minutes")
+        max_length = recipe._meta.get_field("name").max_length
+        self.assertEqual(max_length, 100, "name has over 100 characters")
 
+    # Test for recipe cooking_time being an integer
+    def test_cooking_time_is_integer(self):
+        recipe = Recipe.objects.get(id=1)
+        cooking_time = recipe.cooking_time
+        self.assertIs(type(cooking_time), int, "cooking_time is not a number")
+
+    # Test for recipe ingredients exceeding 250 characters in ingredients field
+    def test_ingredients_max_length(self):
+        recipe = Recipe.objects.get(id=1)
+        max_length = recipe._meta.get_field("ingredients").max_length
+        self.assertEqual(max_length, 250, "ingredients has over 250 characters")
+
+    # Test for recipe difficulty ensuring calculate_difficulty works
     def test_calculate_difficulty(self):
-        recipe = Recipe.objects.get(id=1)
-        self.assertEqual(
-            recipe.calculate_difficulty(), "Easy"
-        )  # Based on the given setup
+        recipe = Recipe(
+            cooking_time=10,
+            ingredients="Ingredient 1, Ingredient 2, Ingredient 3, Ingredient 4",
+        )
+        recipe.save()  # calls calc_difficulty
+        self.assertEqual(recipe.difficulty, "Hard")
 
-    def test_ingredient_str(self):
-        ingredient = Ingredient.objects.get(name="tea-leaves")
-        self.assertEqual(str(ingredient), "tea-leaves")
+class RecipeAuthTest(TestCase):
+    def setUpTestData():
+        pass

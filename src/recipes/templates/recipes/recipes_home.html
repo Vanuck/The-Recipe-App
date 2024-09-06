@@ -1,0 +1,190 @@
+
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Link to Google Fonts for Roboto font family -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    
+    <!-- Link to external CSS stylesheet for additional styles -->
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+
+    <!-- Favicon for the website -->
+    <link rel="icon" href="{% static 'favicon.png' %}" type="image/icon">
+
+    <title>The Recipe App</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Roboto', Arial, sans-serif;
+        }
+
+        /* Background image styling with a smooth transition */
+        .background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            animation: changeBackground 25s infinite;
+            z-index: -1; /* Ensure background is behind other content */
+        }
+
+        /* Keyframe animation for cycling through background images */
+        @keyframes changeBackground {
+            10% { background-image: url('../../static/recipes/images/donair.jpg'); }
+            25% { background-image: url('../../static/recipes/images/chicken.jpg'); }
+            35% { background-image: url('../../static/recipes/images/grilledcheese.jpg'); }
+            50% { background-image: url('../../static/recipes/images/fajitas.jpg'); }
+            66% { background-image: url('../../static/recipes/images/pizza.jpg'); }
+            80% { background-image: url('../../static/recipes/images/spaghetti.jpg'); }
+            100% { background-image: url('../../static/recipes/images/foodbackground.jpg'); }
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            background: #ddec0c;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            flex: 1;
+        }
+
+        .navitem {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            flex: 1;
+        }
+
+        .navitem a {
+            text-decoration: none;
+            color: #000;
+            font-size: 30px;
+        }
+
+        .navitem h1 {
+            font-size: 45px;
+            color: #0c1ae9;
+        }
+
+
+        /* Search bar styling */
+        .search-bar {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar input {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 15px;
+            border: 1px solid #ddd;
+            margin-right: 10px;
+        }
+
+        .search-bar button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 15px;
+            background-color: rgb(80, 4, 4);
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .search-bar button:hover {
+            background-color: rgb(120, 0, 0);
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 80vh;
+        }
+
+        .main-box {
+            padding: 40px 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+        }
+
+        .main-box h1 {
+            font-size: 30px;
+            color: rgb(80, 4, 4);
+        }
+
+        .button {
+            padding: 10px 20px;
+            background-color: #426552;
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .button:hover {
+            transform: scale(1.05);
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            font-size: 18px;
+            text-align: center;
+            padding: 15px;
+            background: rgba(62, 61, 61, 0.5);
+            color: rgb(14, 7, 83);
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+
+    <nav>
+        <ul>
+            <li class="navitem"><a href="{% url 'recipes:recipes' %}">Recipes</a></li>
+            <li class="navitem"><a href="{% url 'users:profile' %}">Profile</a></li>
+            <li class="navitem"><h1>The Recipe App</h1></li>
+            <li class="navitem"><a href="https://vanuck.github.io/Website-Portfolio/" target="_blank">About Me</a></li>
+            <li class="navitem"><a href="{% url 'users:signup' %}">Sign Up</a></li>
+        </ul>
+
+</nav>
+<main>
+    <div class="main-box">
+        <h1>Are you a <b>Chefosaurus Rex!</b></h1>
+        <a class="button" href="{% url 'login' %}">Login</a>
+    </div>
+</main>
+
+    <div class="footer">
+        <p>Follow us on social media!</p>
+        <!-- Will add social media icons and links here -->
+    </div>
+</body>
+</html>

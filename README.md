@@ -9,12 +9,22 @@ This project is a web application using the Django framework with Python. Django
 
 <br>
 
-<h2>Features</h2>
-  
-- **User Registration**: Users can sign up to access their personalized dashboard (to be added).
-- **Recipe Creation and Modification**: Registered users can create and modify their own recipes. Each recipe includes details such as ingredients, cooking time, and an automatically calculated difficulty parameter.
-- **Recipe Search**: Users have the ability to search for recipes using specific ingredients, making it easier to find suitable dishes.
-- **Admin Panel**: A robust admin panel for managing the application's data and users.
+## Key Features
+* Implement user authentication, login, and logout functionality.
+* Enable users to search for recipes by ingredients.
+* Automatically assign a difficulty rating to each recipe.
+* Handle user input and errors effectively.
+* Provide additional details on recipes upon user request.
+* Store user-submitted recipes in a database.
+* Include a Django Admin dashboard for managing database entries.
+* Display statistics and visualizations based on data trends and analysis.
+
+## Tech Used
+* Django (5.0.7)
+* Pillow (10.4.0)
+* Black (formatting: 24.4.2)
+* Pandas (2.2.2)
+* matplotlib (3.9.1)
 
 ## Getting Started
 

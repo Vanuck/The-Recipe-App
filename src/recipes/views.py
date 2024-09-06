@@ -15,6 +15,8 @@ def home(request):
 
 class RecipesListView(LoginRequiredMixin, ListView):
     model = Recipe
+    template_name = 'recipes/recipe_list.html'
+    login_url = '/login/'  # Redirect to login page if not authenticated
 
     def get(self,request):
         form = RecipesSearchForm()

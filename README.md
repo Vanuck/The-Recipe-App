@@ -38,6 +38,45 @@ This project is a web application using the Django framework with Python. Django
 - Dependencies: A requirements.txt file is provided, listing all necessary modules.
 - Instructions: A README file with instructions for downloading and running the app locally is included.
 
+## Setup and Installation
+
+1. **Clone the repository:**
+
+```bash
+git clone [repository URL]
+cd recipe-app
+```
+
+2. **Install dependencies:**
+
+```bash
+pip install -r requirements.txt
+```
+
+3. **Setup Database:**
+
+- Adjust the `DATABASES` configuration in `settings.py` for PostgreSQL and SQLite as per your development and production environments.
+
+4. **Run Migrations:**
+
+```bash
+python manage.py migrate
+```
+
+5. **Create Superuser for Admin Access:**
+
+```bash
+python manage.py createsuperuser
+```
+
+6. **Run the Development Server:**
+
+```bash
+python manage.py runserver
+```
+
+- Visit `http://127.0.0.1:8000` in your browser to view the app.
+
 ## Contribution
 Feel free to fork this repository and contribute by submitting pull requests. For major changes, please open an issue first to discuss what you would like to change.
 

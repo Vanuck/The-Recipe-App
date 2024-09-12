@@ -1,6 +1,9 @@
 # The Recipe App
 - Python & Django Recipe App
 
+## Preview
+
+![Screenshot] (media/loginpage.jpg)
 
 <h2>Overview</h2>
 <p>
@@ -26,10 +29,20 @@ This project is a web application using the Django framework with Python. Django
 * Pandas (2.2.2)
 * matplotlib (3.9.1)
 
-## Getting Started
+## Requirements
+- Compatibility: Works on Python 3.6+ installations and Django version 3.
+- Error Handling: Manages exceptions and errors during user input, displaying user-friendly error messages.
+- Database: Connects to a PostgreSQL database hosted locally (uses SQLite during development).
+- User Interface: Provides an easy-to-use interface with simple input forms and clear instructions. Menus for features like login and logout are presented neatly with concise prompts.
+- Code Quality: Includes proper documentation and automated tests. Code is uploaded on GitHub.
+- Dependencies: A requirements.txt file is provided, listing all necessary modules.
+- Instructions: A README file with instructions for downloading and running the app locally is included.
 
-(Instructions on how to set up, install dependencies, and run the app.)
+## Contribution
+Feel free to fork this repository and contribute by submitting pull requests. For major changes, please open an issue first to discuss what you would like to change.
 
+# Contributors
+- [Andrew Jornitz](https://github.com/Vanuck)
 
 
   
